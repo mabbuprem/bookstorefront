@@ -1,16 +1,16 @@
 <template>
   <div class="home">
-    <DashboardUI></DashboardUI>
+    <Dashboard></Dashboard>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import DashboardUI from '@/components/DashBoardNavigation.vue'
+import Dashboard from '@/components/DashBoardNavigation.vue'
 export default {
   name: 'DashboardUI',
   components: {
-    DashboardUI
+    Dashboard
   }
 }
 </script>

@@ -1,135 +1,120 @@
 <template>
-  <v-form>
-    <br />
-    <br />
-    <v-text-field
-      outlined
-      dense
-      label="E-mail"
-      id="email"
-      :rules="[emailRules.required, emailRules.email_validation]"
-      required
-      autocomplete="off"
-      v-model="form.email"
-    ></v-text-field>
-    <v-text-field
-      outlined
-      dense
-      id="password"
-      label="password"
-      :rules="[passwordRules.required, passwordRules.minLength]"
-      v-model="form.password"
-      :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-      @click:append="() => (showPassword = !showPassword)"
-      :type="showPassword ? 'text' : 'password'"
-      required
-    ></v-text-field>
-    <span>
-      <router-link
-        to="/forgetpassword"
-        class="route-link1"
-        id="move-to-forgetpassword"
-        >forgetpassword</router-link
-      >
-    </span>
-    <br /><br />
-    <button x-large block class="button" @click="validate">Login</button>
-    <!-- <div>
-      <span>OR</span>
-    </div>
-     <div class="first_last_name">
-                <button x-large block class="button5" @click="validate">FaceBook</button>
-                <button x-large block class="button6" @click="validate">Google</button>
-              </div> -->
-  </v-form>
-   
-    
-</template>
+  <v-form ref="form" v-model="valid" lazy-validation>
+    <v-col>
+      <div class="email">
+        <v-text-field outlined dense autocomplete="off" v-model="email" :rules="emailRules" label="E-mail" required>
+        </v-text-field>
+      </div>
+      <div class="password">
+        <v-text-field outlined dense :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+          @click:append="() => (showPassword = !showPassword)" :type="showPassword ? 'text' : 'password'"
+          v-model="Password" :rules="passwordRules" label="Password" required>
+        </v-text-field>
+      </div>
+      <div class="col1">
+        <router-link to="/forgetpassword">Forget Password</router-link>
+      </div>
 
+      <div style="
+          top: 398px;
+          left: 727px;
+          width: 270px;
+          height: 37px;
+          background: #a03037 0% 0% no-repeat padding-box;
+          border-radius: 3px;
+          color: #ffffff;
+          opacity: 1; ;
+        ">
+        <v-btn :disabled="!valid" color="#a03037" class="" @click="validate">
+          Login
+        </v-btn>
+      </div>
+      <div style="padding-top: 15px; margin-left: -10px;margin-bottom: 10px;">
+        <b>-----OR-----</b>
+      </div>
+      <div class="button_fb_google">
+          <v-btn href="https://www.facebook.com/" :disabled="!valid" color="#4266B2" class="mr-4">
+            FaceBook
+          </v-btn>
+
+          <v-btn href="https://www.google.com/" :disabled="!valid" color="" class="mr-4" @click="validate">
+            Google
+          </v-btn>
+        </div>
+    </v-col>
+  </v-form>
+</template>
+  
 <script>
 import { login } from '../services/UserService'
 export default {
-  name: "LoginUI",
+  name: "LoginComponent",
   data: () => ({
-    form: {
-      email: '',
-      password: '',
-      FaceBook: '',
-      Google: ''
-    },
+    valid: true,
+    // email: "",
+    Password: "",
+
+    passwordRules: [
+      (v) => !!v || "password is required",
+      (v) =>
+        (v && v.length <= 10) || "password must be less than 10 characters",
+    ],
+    email: "",
+    emailRules: [
+      (v) => !!v || "E-mail is required",
+      (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
+    ],
     showPassword: false,
+    showCPassword: false,
     sending: false,
-    emailRules: {
-      required: (v) => !!v || "E-mail is required",
-      email_validation: (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
-    },
-    passwordRules: {
-      required: (v) => !!v || "Name is required",
-      minLength: (v) => (v && v.length > 7) || "password must be 8 characters",
-    },
   }),
   methods: {
-        validate() {
-            console.log(this.email)
-            console.log(this.password)
-            // this.$refs.form.validate()
-            let reqData = {
-                email: this.email,
-                password: this.password
-            }
-            console.log(reqData)
-            login(reqData).then((responce) => {
-                console.log(responce);
-                localStorage.setItem("token",responce. data.token);
-                this.$router.push({path:'/dashbordbar'})
-            }).catch((error) => {
-                console.log(error);
-            })
-        },
+      validate() {
+      console.log(this.email)
+      console.log(this.Password)
+      // this.$refs.form.validate()
+      let reqData = {
+        email: this.email,
+        password: this.Password
+      }
+      console.log(reqData)
+      login(reqData).then((responce) => {
+        console.log(responce);
+        localStorage.setItem("token", responce.data.token);
+        this.$router.push({ path: '/dash' })
+      }).catch((error) => {
+        console.log(error);
+      })
     },
- 
-}
+  }
+};
 </script>
-
-<style>
-.button {
-    background:brown;
-    /* width: 100px;
-    height: 37px;
-    left: 300px;
-    top: 500px;
-    color: white;
-    font-size: 18px; */
-  }
-
-  .route-link1{
-    padding-left: 220px;
-  }
-  .first_last_name {
- 
-  gap: 50px;
+  <style>
   
-  /* padding: 6px 8px; */
+  
+  .email {
+    width: 270px;
+    display: flex;
+  }
+  
+  .password {
+    width: 270px;
+    display: flex;
+  }
+  
+  
+  .col1{
+  padding-left: 130px;
+  top: -10px;
+  bottom: 100px;
 }
+  
+  .button_fb_google {
+      /* padding-bottom: 300px;
+      top:100px;
+      right:500px; */
+      
 
-.button5 {
-    background:blue;
-    width: 125px;
-    height: 37px;
-    left: 727px;
-    top: 500px;
-    color: white;
-    font-size: 18px;
-  gap: 5px;
+      
   }
-  .button6 {
-    background: brown;
-    width: 125px;
-    height: 37px;
-    left: 727px;
-    top: 500px;
-    color: white;
-    font-size: 18px;
-    gap: 5px;
-  }
-</style>
+  </style>

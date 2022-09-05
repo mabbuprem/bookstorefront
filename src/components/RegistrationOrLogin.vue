@@ -76,17 +76,18 @@ body {
 }
 
 .main-card1 {
-    top: 105px;
-    right: 260px;
-    width: 389px;
-    height: 475px;
+    top: 90px;
+    right: 300px;
+    width: 350px;
+    /* height: 50px; */
+    
 }
 
 .shopping-card {
-    top: 167px;
+    top: 150px;
     left: 170px;
     width: 500px;
-    height: 415px;
+    height: 300px;
     
 }
 
@@ -100,6 +101,14 @@ body {
 .text{
     font-size: 12px;
 }
+.button_fb_google {
+      /* padding-bottom: 300px;
+      top:100px;
+       justify-self: center;
+       right:500px; */
+       
+}
+
 .button123{
     background:brown;
     width: 352px;
@@ -109,4 +118,14 @@ body {
     color: white;
     font-size: 18px;
 }
+
+/* .shopping-card2 {
+    top: 100px;
+    left: -300px;
+    width: 500px;
+    height: 300px;
+    
+} */
+
+
 </style>

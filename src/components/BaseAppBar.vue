@@ -1,95 +1,106 @@
 <template>
-  <div>
-    <v-card class="mx-auto overflow-hidden topBar">
-      <v-row>
-        <v-app-bar color="#A03037" class="main-bar" fixed elevation="1">
-          <div class="book-icon">
-            <v-img
-              class="mx-2 book-icon"
-              contain
-              :src="require('../assets/education.svg')"
-            ></v-img>
-          </div>
-          <v-card-title class="white--text headline"> BookStore </v-card-title>
-        </v-app-bar>
-      </v-row>
-    </v-card>
-  </div>
+    <div>
+        <v-card class="mx-auto overflow-hidden topBar">
+            <v-row>
+                <v-app-bar color="#A03037" class="main-bar" fixed elevation="1">
+                    <div class="book-icon">
+                        <v-img class="mx-2 book-icon" contain :src="require('../assets/education.svg')"></v-img>
+                    </div>
+                    <v-card-title class="white--text headline"> BookStore </v-card-title>
+                   
+                        <v-col class="search" cols="7">
+                            <v-text-field solo label="Search" prepend-inner-icon="mdi-magnify" hide-details>
+                            </v-text-field>
+                        </v-col>
+
+                </v-app-bar>
+
+            </v-row>
+
+        </v-card>
+    </div>
 </template>
 
 <script>
-export default {};
+export default {
+    data: () => ({
+        drawer: false,
+        group: null,
+    }),
+};
 </script>
 
 <style>
 .supermarket-icon {
     margin-left: 43px;
-    min-height:13px;
-    min-width:19px;
+    min-height: 13px;
+    min-width: 19px;
 }
 
 .title {
     font-size: 14px;
     font-weight: 15px;
-   color: white;
-   padding-left:-25px;
+    color: white;
+    padding-left: -25px;
 }
 
- .avatar {
-    justify-content:flex-end;
+.avatar {
+    justify-content: flex-end;
     margin-top: 1px;
-} 
+}
 
 #top-search-bar {
-    margin-right: 250px; 
+    margin-right: 250px;
     width: 500px;
-    padding-top:5px
+    padding-top: 5px
 }
 
 .main-bar {
     color: brown;
-    width:100%
+    width: 100%
 }
 
-/* .book-icon {  
+ .book-icon {  
     margin-top: 1px;
-    padding-right:10px;
-    margin-left: 0px;
-    max-height:60px;
-    max-width:60px;
-} */
+    padding-right:-20px;
+    margin-left: 100px;
+    max-height:100px;
+    max-width:200px;
+} 
 
 .white {
     font-variant: normal;
 }
 
 #bottom-name {
-   font-size: 11px;
-   margin-bottom: -11px;
-   color:white;
-   padding-left: -1px;
+    font-size: 11px;
+    margin-bottom: -11px;
+    color: white;
+    padding-left: -1px;
 }
 
 #bottom-name-cart {
     font-size: 11px;
-   margin-bottom: -21px;
-   color:white;
-   padding-left: 10px;
+    margin-bottom: -21px;
+    color: white;
+    padding-left: 10px;
 }
 
 @media only screen and (max-width: 360px) {
     .supermarket-icon {
         margin-left: 43px;
-        min-height:10px;
-        min-width:15px;
+        min-height: 10px;
+        min-width: 15px;
     }
-  label{
-      font-size: 5px;
-  }
+
+    label {
+        font-size: 5px;
+    }
+
     .title {
-        font-size:4px;
-       color: white;
-       padding-left:0px;
+        font-size: 4px;
+        color: white;
+        padding-left: 0px;
     }
 
     .v-application .ml-5 {
@@ -98,7 +109,7 @@ export default {};
     }
 
     .avatar {
-        justify-content:flex-end;
+        justify-content: flex-end;
         margin-top: 1px;
         margin-left: -20px;
     }
@@ -115,27 +126,27 @@ export default {};
         width: 130px;
         padding-top: 9px;
     }
-    
+
     .main-bar {
         color: brown;
-        width:100%
-    }  
-  }
+        width: 100%
+    }
+}
 
-  @media only screen and (min-width: 361px ) and   (max-width: 768px ) {
+@media only screen and (min-width: 361px) and (max-width: 768px) {
     .supermarket-icon {
         margin-left: 43px;
-        min-height:10px;
-        min-width:15px;
+        min-height: 10px;
+        min-width: 15px;
     }
-   
+
     .v-application .ml-5 {
-        margin-left: 5px!important;
+        margin-left: 5px !important;
         font-size: 18px;
     }
 
     .avatar {
-        justify-content:flex-start;
+        justify-content: flex-start;
         margin-top: 1px;
     }
 
@@ -144,8 +155,8 @@ export default {};
         width: 250px;
         margin-top: 7px;
     }
-   
-   /* .book-icon {  
+
+    /* .book-icon {  
         margin-top: 1px;
         margin-left: 20px;
         max-height:60px;
@@ -154,7 +165,17 @@ export default {};
 
     .main-bar {
         color: brown;
-        width:100%
+        width: 100%
     }
+}
+
+.search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    right: -150px;
+    
+    
+    
 }
 </style>

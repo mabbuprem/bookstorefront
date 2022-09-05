@@ -33,10 +33,10 @@ export default {
 
 <style >
 .main-card {
-    top: 150px;
+    top: 100px;
     right: 170px;
     width: 389px;
-    height: 290px;
+    height: 400px;
 }
 
 .display-card {

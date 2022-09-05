@@ -5,7 +5,8 @@ import RegistrationView from '../views/UserSignUp.vue'
 import LoginUser from '../views/LoginUser.vue'
 import registerOrLog from '../views/SignupOrLogin.vue'
 import Password from '../views/ForgetPasswordForm.vue'
-import DashboardUI from '../views/Dashboardview.vue'
+import Dashboard from '../views/Dashboardview.vue'
+import GetAllBooks from '../components/DisplayBooks.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -47,11 +48,11 @@ const routes = [
   },
 
   {
-    path: '/dashboard',
-    name: DashboardUI,
-    component: DashboardUI
-    
-  },
+    path: '/dash',
+    name: 'dashboardUI',
+    component:Dashboard, 
+    children: [{ path: '/', name: 'GetAllBooks', component: GetAllBooks }],
+    },
 
 ]
 
